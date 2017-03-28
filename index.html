@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <title>Learning jQuery</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    #ex1a, #ex2a, #ex3a{display:none;}
+    .act-right{
+      min-height: 500px;
+      position: relative;
+    }
+    .act-right img{width:100%; position: absolute;}
+    .dont-act-right img{width:100%;}
+
+    .act-right-2, .act-right-last{
+      min-height: 500px;
+      position: relative;
+      overflow:hidden;
+    }
+    .act-right-2 img, .act-right-last img{width:100%; position: absolute;}
+    #first{}
+    #second{left:100%;}
+    #third{left:200%;}
+    #fourth{left:300%;}
+
+      .box-hov{background-color:black;width:100px;height:100px;margin:0 auto;}
+      .box-hov:hover{background-color:pink;}
+      #dogs li:nth-of-type(3)::before {content:"Bad ";color:red; }
+      #dogs li:nth-of-type(3)::after {content:" !";}
+      #bro {
+          width: 100px;
+          height: 100px;
+          background-color: red;
+          position: relative;
+
+          /* Chrome, Safari, Opera */
+          -webkit-animation-name: example;
+          -webkit-animation-duration: 5s;
+          -webkit-animation-timing-function: linear;
+          -webkit-animation-delay: 2s;
+          -webkit-animation-iteration-count: infinite;
+          -webkit-animation-direction: alternate;
+
+          /* Standard syntax */
+          animation-name: example;
+          animation-duration: 5s;
+          animation-timing-function: linear;
+          animation-delay: 2s;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+      }
+
+      /* Chrome, Safari, Opera */
+      @-webkit-keyframes example {
+          0%   {background-color:red;    left:0px;  top:0px;}
+          25%  {background-color:yellow; left:85%;  top:0px;}
+          50%  {background-color:blue;   left:85%;  top:200px;}
+          75%  {background-color:green;  left:0px;  top:200px;}
+          100% {background-color:red;    left:0px;  top:0px;}
+      }
+
+      /* Standard syntax */
+      @keyframes example {
+          0%   {background-color:red;    left:0px;  top:0px;}
+          25%  {background-color:yellow; left:85%;  top:0px;}
+          50%  {background-color:blue;   left:85%;  top:200px;}
+          75%  {background-color:green;  left:0px;  top:200px;}
+          100% {background-color:red;    left:0px;  top:0px;}
+      }
+      @media screen and (max-width: 600px) {
+        header {
+            background-color: #343434 !important;
+        }
+      }
+    </style>
+</head>
+
+<body data-spy="scroll">
+
+    <!---//Facebook button code-->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- ******HEADER****** -->
+    <header id="header" class="header">
+        <div class="container">
+            <h1 class="logo pull-left">
+                <a class="scrollto" href="#promo">
+                    <span class="logo-title">jQuery</span>
+                </a>
+            </h1><!--//logo-->
+            <nav id="main-nav" class="main-nav navbar-right" role="navigation">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><!--//nav-toggle-->
+                </div><!--//navbar-header-->
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
+                        <li class="nav-item"><a class="scrollto" href="#review">Intro</a></li>
+                        <li class="nav-item"><a class="scrollto" href="#positioning">Events</a></li>
+                        <li class="nav-item"><a class="scrollto" href="#morecss">Animate</a></li>
+                        <li class="nav-item"><a class="scrollto" href="#animation">Slider</a></li>
+                        <li class="nav-item last"><a class="scrollto" href="#contact">Contact</a></li>
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </nav><!--//main-nav-->
+        </div>
+    </header><!--//header-->
+
+    <!-- ******PROMO****** -->
+    <section id="promo" class="promo section offset-header">
+        <div class="container text-center">
+            <h2 class="title"><span class="highlight">j</span>Query</h2>
+            <p class="intro">A guide to using the jQuery library</p>
+            <div class="btns">
+                <a class="btn btn-cta-secondary" href="http://nyc.us9.list-manage.com/subscribe?u=8714225429a6cd1fa0eeaea0e&id=13632064ea" target="_blank">Subscribe</a>
+                <a class="btn btn-cta-primary" href="https://www.facebook.com/lettherebecode" target="_blank">Facebook</a>
+            </div>
+            <ul class="meta list-inline">
+                <!--<li><a href="#" target="_blank">View on GitHub</a></li>
+                <li><a href="https://github.com/twbs/bootstrap" target="_blank">Full Documentation</a></li>-->
+                <li>Created by: <a href="https://github.com/alaingoldman" target="_blank">Alain Goldman</a></li>
+            </ul><!--//meta-->
+        </div><!--//container-->
+        <div class="social-media">
+            <div class="social-media-inner container text-center">
+            </div>
+        </div>
+    </section><!--//promo-->
+
+    <!-- ******REVIEW****** -->
+    <section id="review" class="docs section">
+        <div class="container">
+            <div class="docs-inner">
+            <h2 class="title text-center">Intro</h2>
+            <div class="block">
+                <h3 class="sub-title text-center">What is jQuery?</h3>
+                <p>jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.</p>
+                <p>JavaScript itself is understood by all browsers and doesn't require a download, but if you want to start using jQuery you have to send the library to the browser. You could either download and include jQuery as a resource or point to the jQuery library online by Google.</p>
+
+                <p><a href="http://jquery.com/download/" target="blank">You can download jQuery here</a></p>
+                <div class="code-block">
+                    <!--//Use Prismjs - http://prismjs.com/index.html#basic-usage -->
+                    <pre><code class="language-markup">
+      &lthead&gt
+        &ltscript src="jquery-1.11.2.min.js"&gt&lt/script&gt
+      &lt/head&gt
+                     </code></pre>
+                </div><!--//code-block-->
+                <p>So you would include your jQuery library with the script tag. I want you to notice two things. The jQuery library file is a .js meaning it is written in javascript. Secondly, I want you to notice that the script tag is nested inside of the head tag.
+                </p>
+                <p>
+                If you don't feel like downloading jQuery alternatively Google hosts a jQuery file so you could point to to make your life easier.
+                </p>
+                <div class="code-block">
+                    <!--//Use Prismjs - http://prismjs.com/index.html#basic-usage -->
+                    <pre><code class="language-markup">
+&ltscript src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"&gt &lt/script&gt
+                     </code></pre>
+                </div><!--//code-block-->
+                <br>
+                <h3 class="sub-title text-center">So... where does it go?</h3>
+                <p>When you write jQuery or JavaScript you can add it to your document in one of two ways. Firstly, you can include it inside of a <b>&ltscript&gt</b> tag.</p>
+                <pre><code class="language-markup">
+    &ltscript&gt
+      $(document).ready(function(){
+        $('.big a').hide()
+      });
+    &lt/sript&gt
+                </code></pre>
+                <br>
+                <p>No need to worry about what this code does for now. Just know that A script tag can go wherever you want it to be in the HTML file however. It would make most sense to either be put at the top of the page in the <b>&lthead&gt</b> or the bottom of the page after all the HTML elements.</p>
+                <p>Secondly, you can also link to an external jQuery or JavaScript file with a script tag as well.</p>
+                <pre><code class="language-markup">
+    &ltscript src="example.js"&gt &lt/script&gt
+                </code></pre>
+                <p> Here we are adding a file called example.js to our HTML document.</p>
+                <br>
+                <p> <strong>However, if you are intending to write jQuery make sure to add your jQuery code after the jQuery library or it will not work.</strong></p>
+                <h3 class="sub-title text-center">Syntax</h3>
+                <br>
+                <p>In jQuery you select HTML elements with queries and perform actions on them. The basic syntax is:</p>
+                <pre><code class="language-javascript">
+   $(selector).action()
+                     </code></pre>
+                </div><!--//code-block-->
+                <ul>
+                  <li><b>Dollar Sign ($) :</b> This tells the browser access jQuery.</li>
+                  <li><b>Selector :</b> This queries (or finds) HTML elements.</li>
+                  <li><b>Action :</b> This is where you put the jQuery action that you want performed on the element(s).</li>
+                </ul>
+                <p>So jQuery uses the same selector methodolgy that CSS uses to target HTML elements. So in order to understand jQuery lets review CSS selectors.</p>
+                <br>
+                            <h3 class="sub-title text-center">CSS Targeting with Selectors</h3><br>
+                            <pre><code class="language-css">
+        selector {
+            property:value;
+        }
+                            </code></pre>
+                            <div class="code-block">
+
+                            <p>In CSS you use a <b>selector</b> to target the elements you want to apply styles to. One way you can select and element is by looking for it's id or class attribute. If you want to select an element with the id value of content and another with the class value of wrap you would write this : </p>
+                                <pre>
+
+                                <code class="language-css">
+        #content {
+          font-family: 'Lato', arial, sans-serif;
+          font-size: 16px;
+        }
+        .wrap {
+          margin: 0 auto;
+        }
+                                </code></pre>
+                            </div><!--//code-block-->
+                            <p> Here is a list of some other ways to target elements.</p>
+                        <div class="block">
+                            <br>
+                            <strong>Select all elements on the page with *</strong>
+                            <br>
+                            <pre><code class="language-css">
+        *{margin:0;padding:0;}
+                            </code></pre>
+                            <strong>Select based on the type of tag.</strong>
+                            <br>
+                            <pre><code class="language-css">
+        a {text-decoration:none;}
+        body {background-color:red;}
+                            </code></pre>
+                            <strong>Select descendents.</strong>
+                            <br>
+                            <pre><code class="language-css">
+        li a{
+          text-decoration:none;
+        }
+                            </code></pre>
+                            <strong>You can join multiple selectors with a comma. <br>(Yes, that is a comma between .top and .bottom.)</strong>
+                            <pre><code class="language-css">
+        .top ,.bottom{
+          margin:10px;
+        }
+                            </code></pre>
+                            <strong>You can select all elements with a particular class by adding the element tag with the class and no space in between.</strong>
+                                                <pre><code class="language-css">
+        a.logo{
+          float:left;
+        }
+                                                </code></pre>
+
+                            <p> For a more expanisve list of CSS selectors <a target="blank" href="http://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048" >you can check out this link</a> </p>
+                            </div><!--//code-block-->
+                            <h3 class="sub-title text-center">CSS Targeting with Psuedo Classes</h3>
+                            <br><br>
+                                                <strong> : nth-of-type(n) </strong> with <strong> :: before </strong> + <strong> :: after</strong>
+                                                <pre><code class="language-css">
+        #dogs li:nth-of-type(3)::before {
+            content:"Bad ";
+            color:red;
+        }
+        #dogs li:nth-of-type(3)::after {
+            content:" !";
+        }
+                                                </code></pre>
+                                                <pre><code class="language-markup">
+        &ltul id="dogs"&gt
+            &ltli&gtDog&lt/li&gt
+            &ltli&gtDog&lt/li&gt
+            &ltli&gtDog&lt/li&gt
+            &ltli&gtDog&lt/li&gt
+        &lt/ul&gt
+                                                </code></pre>
+                                                <ul id="dogs">
+                                                    <li>Dog</li>
+                                                    <li>Dog</li>
+                                                    <li>Dog</li>
+                                                    <li>Dog</li>
+                                                </ul>
+                                                <p>This CSS is a bit complex but it says that target the id dogs. Then target an li element inside of it. Then apply this property change to the 3rd li within the dogs id. Then with <strong>::before</strong> add before the element the content "bad " and make the color of the text red. Then with <strong>::after</strong> add the content of " !".</p>
+                                                <p>If you want to see a more expanisive list of pseudo elements <a href="http://www.w3schools.com/css/css_pseudo_elements.asp" target="blank">you can check them out here.</a></p>
+                                                <br>
+                <h3 class="sub-title text-center">Selectors with jQuery</h3>
+                <div class="code-block">
+                    <pre><code class="language-javascript">
+    $("p").hide()     // targets and hides all &ltp&gt elements.
+    $(".test").hide() // targets and hides all elements with class="test".
+    $("#example").hide() // targets and hides the element with id="example".
+                     </code></pre>
+                </div><!--//code-block-->
+                <p> You don't have to worry what <b>.hide( &nbsp )</b> is doing right now. Even though you can probably guess that it is hiding the element. But I want you to focus on the left side, being the selector.</p>
+                <p>So inside of single or double quotes we can use our selectors to target elements. In this basic example we targeted a p tag just with the letter p, much like how we would in CSS. We could also target based on id or class. With Id represented with a # in front of it and class represented with a . in front of it just like in CSS targeting.</p>
+
+                <p>Also as a side note if you noticed the way you make single line comment in javascript is <br>  two forward slashes <b>//</b> This remains true for the <b>jQuery</b> library as well.</p>
+
+                <div class="code-block">
+                    <pre><code class="language-javascript">
+    $("p.large").hide()   // targets a &ltp&gt tag with the class="large".
+    $(".sml, .xl").hide() // targets an element with class="sml"
+                          // and also targets an element with class="xl".
+
+    $(".big a").hide() // targets an &lta&gt tag within an element with class="big".
+    $("li:nth-of-type(3)").hide() // targets the 3rd &ltli&gt
+                     </code></pre>
+                </div><!--//code-block-->
+            <br>
+            <p> jQuery selectors can be very broad or specifc depending on the given situtation.</p>
+            <br>
+            <h3 class="sub-title text-center">Before we start...</h3>
+            <br>
+            <p>Before we start I want to touch a few of the basics you will need to know to traverse this tutorial.</p>
+            <strong>Basic JavaScript Commands</strong>
+            <div class="code-block">
+                <pre><code class="language-javascript">
+    alert("This is an alert")
+    console.log("This gets sent to console")
+    prompt("What is your name?")
+                 </code></pre>
+            </div><!--//code-block-->
+            <p><strong>alert</strong> sends what is in the quotes in a popup box.</p>
+            <p><strong>console.log</strong> sends what is in the quotes to the browser console.</p>
+            <p><strong>prompt</strong> sends a message to the user and asks for an input.</p>
+            <br>
+            <strong>Defining Variables</strong>
+            <div class="code-block">
+                <pre><code class="language-javascript">
+    var a = 12
+    var b = 13;
+    var c = 12; var d = 10;
+    e = 15
+    var f;
+    f = 16;
+                 </code></pre>
+            </div><!--//code-block-->
+            <!-- EXPLAIN WHY WE SHOULD USE VARIABLES !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  -->
+            <p>Now to define a varaible you can type <strong>var variableName = value</strong> where variable name could be anything you want. You could also leave out the var but this will make code harder to read. So you should always include var before defining a variable. Variables can contain letters digits dollar signs and underscores. But a variable in JavaScript cannot start with a number.</p>
+            <p> A line of instructions or code to be executed in javascript is called a statement. Each one of these individual lines are statements. This is akin to writing a setence in english. Now all sentences in english must end with punctuation. So naturally some of you may have noticed that and the end of some of the statements I throw in a semicolon (;). However, semicolons in JavaScript <strong>&nbsp are not necessary.</strong>&nbsp With the exception that if two statements are on the same line you need a semicolon to tell the JavaScript where the statement begins and ends. So this is necessary: <strong> &nbsp var c = 12; &nbsp var d = 10</strong>&nbsp . However, it's customary but not necessary to put them after functions.</p>
+            <div class="code-block">
+                <pre><code class="language-javascript">
+    var name = prompt("What is your name?");
+                 </code></pre>
+            </div><!--//code-block-->
+            <p>So if you wanted to catch what the inputs for later you can set a variable equal to the prompt. </p>
+            <div class="code-block">
+                <pre><code class="language-javascript">
+    var name = prompt("What is your name?");
+    alert(name);
+    alert("Hello " + name);
+                 </code></pre>
+            </div><!--//code-block-->
+            <p>So if you wanted to spit back the name variable in an alert you can just drop it in without quotes. You are not using quotes because this is a variable. <strong>&nbsp alert("name")</strong> would alert the word name as oppose to the variable called name. Now if you wanted to add some text before the variable you'll just use a plus sign and javasript with put it together.</p>
+            <br><br>
+            <strong>Using Functions</strong>
+            <div class="code-block">
+                <pre><code class="language-javascript">
+    function name(parameter1, parameter2, parameter3) {
+        // code to be executed
+    };
+                 </code></pre>
+            </div><!--//code-block-->
+            <p>If there is a group of code you want to perform mulitple times instead of writing it over and over we would use a function. This allows us to call a group of code with one command.</p>
+            <p>Here <strong>name</strong> is the name of the function. It can be called anything you want and this becomes a keyword to call the function. Later on we can call with function by just typing <strong> name()</strong>.</p>
+            <p>Parameters, also know as arguments, are an optional field you can include when defining a function. If your function for example adds two numbers together it would require 2 parameters being the first number and the second number. These paramenters will be available inside of the function.</p>
+            <p>The code to be executed goes inside of the two curly braces.</p>
+            <p>Now in order to start the function you would call it by typing it's name with the parameters. <br><strong>name( &nbsp p1, &nbsp p2, &nbsp p3 &nbsp )</strong> If the parameter section is blank you leave the parathesis blank <strong>name( )</strong></p>
+            <div class="code-block">
+                <pre><code class="language-javascript">
+    function daysAlive(age) {
+        var result = age * 365;
+        alert("You have been alive " + age + " days!");
+    };
+
+    var answer = prompt("How old are you?");
+    daysAlive(answer);
+                 </code></pre>
+            </div><!--//code-block-->
+            <p>So I created a function called daysAlive which takes one parameter of age. It then performs a calculation of multiplying that age by 365 and alerting that back to the user. Now that was the definition of the function. We have to actually call it. So we do a prompt to get the user's age and then we throw that into the function. What I want you to notice is that the variable <strong> answer </strong> is thrown into the function and the function parameter is called age. It doesn't matter what the name of the variable is as long as daysAlive has a value in the parameter section. I could have instead done this <strong> daysAlive( 27 );</strong> with the same effect.</p>
+            <br>
+            <p><strong>Now that we covered the basics... Lets get started</strong></p>
+            <br>
+            <br>
+            </div><!--//block-->
+            </div>
+            </div><!--//docs-inner-->
+        </div><!--//container-->
+    </section><!--//features-->
+
+    <section id="positioning" class="license section">
+        <div class="container">
+            <div class="license-inner">
+            <h2 class="title text-center">Events</h2>
+                <div class="info">
+                  <p>Events are all the different actions a user can perform on a webpage. Here are a list of some events.</p>
+                  <strong>Common Events</strong>
+                  <br>
+                  <ul>
+                      <li>click</li>
+                      <li>mouseenter</li>
+                      <li>mouseleave</li>
+                      <li>load</li>
+                      <li>scroll</li>
+                      <li>resize</li>
+                  </ul>
+                    <br>
+                    <h3 class="sub-title text-center">.click( );</h3>
+                    <br><br>
+                    <p> So lets create a div that we are going to target with jQuery. </p>
+                    <div class="code-block">
+                    <pre><code class="language-markup">
+  &ltdiv id="cheese" style="height:100px; width:100px; background-color:pink;"&gt
+  &lt/div&gt
+                     </code></pre>
+                    </div><!--//code-block-->
+                    <p>So here we created a div with the id set to cheese. We used the style attribute to give the div a height and width of 100 pixels and a background-color of pink.
+                      <br><br>
+                    Now we know that in order to select a div with the id of cheese we have to do this:</p>
+                    <div class="code-block">
+                      <pre><code class="language-javascript">
+    $("#cheese") &nbsp // targets an element with the id="cheese".
+                      </code></pre>
+                    </div><!--//code-block-->
+                    <br>
+                    <div id="cheese" style="height:100px; width:100px; background-color:pink;">
+                    </div>
+                    <br>
+                    <p>So We target the div but we want an effect. Lets make something happen when it is clicked.</p>
+                    <div class="code-block">
+                      <pre><code class="language-javascript">
+    $("#cheese").click();
+                      </code></pre>
+                    </div><!--//code-block-->
+                    <p>So you may notice that <strong>click()</strong> is called just like a function and that is because it is. It's an innate function in jQuery. Now, this is how we put a click event on the cheese id. However clicking this right now does nothing lets add a bit more to it.</p>
+                  <div class="code-block">
+                    <pre><code class="language-javascript">
+    $("#cheese").click(function(){
+        alert("You clicked on this div!");
+    });
+                    </code></pre>
+                  </div><!--//code-block-->
+
+                    <p>Now inside of <strong>.click( )</strong> we create a function which alerts that this div has been clicked.</p>
+                    <br>
+                    <p> Ok so we have seen <strong> .hide( ) </strong> lets see what it does! So we have this annoying picture of Kanye. Lets hide it.</p>
+                    <div class="code-block">
+                      <pre><code class="language-markup">
+    &ltimg id="goaway" src="http://streetz945.com/proof/wp-content/uploads/2014/09/kanye-west-22.jpg"&gt
+                      </code></pre>
+                    </div><!--//code-block-->
+                    <div class="code-block">
+                      <pre><code class="language-javascript">
+      $("#goaway").click(function(){
+        $('#goaway').hide();
+      });
+                      </code></pre>
+                    </div><!--//code-block-->
+                    <br>
+                    <img id="goaway" src="http://streetz945.com/proof/wp-content/uploads/2014/09/kanye-west-22.jpg" width="100%" title="click to hide">
+                    <br><br>
+                    <p> Click that image ^ </p>
+                    <p> Some of you testing your code might have done <strong>$('#goaway').hide( );</strong> without the click trigger. This will hide the div immediately after the jQuery gets loaded, which is probably instant depending on how long your page takes to load before the jQuery gets executed.</p>
+                    <div class="code-block">
+                      <pre><code class="language-javascript">
+      $("#goaway").click(function(){
+        $('#goaway').fadeOut(2000);
+      });
+                      </code></pre>
+                    </div><!--//code-block-->
+                    <br>
+                    <p> We could actually switch out <strong>.hide( )</strong> with <strong>.fadeOut( )</strong>. We don't have to pass in a parameter with fadeOut but if we do that will be the time in miliseconds of how long it takes to fade out the div. So 2000 is equivalent to 2 seconds.  </p>
+                    <img id="goaway2" src="https://collegecandy.files.wordpress.com/2014/09/screen-shot-2014-09-14-at-11-01-01-am.png" width="100%" title="click to hide">
+                    <br><br>
+                    <p>Since there is a <strong>fadeOut( )</strong> and a <strong>hide( )</strong> you could probably guess there is a <strong>fadeIn( )</strong> and <strong>show( )</strong> . The only problem is we need something else to trigger the <strong>show( )</strong> or <strong>fadeIn( )</strong> because we obviously cannot click an element that is not displayed.</p>
+                    <br>
+                    <div class="code-block">
+                      <pre><code class="language-markup">
+      &ltbutton&gtShow JayZ&lt/button&gt
+      &ltimg id="jayz" src="http://static.vibe.com/files/photo_gallery_images/magna-carta-holy-grail-review-4.jpg"&gt
+                      </code></pre>
+                    </div><!--//code-block-->
+                    <div class="code-block">
+                      <pre><code class="language-css">
+      #jayz{ display: none; }
+      /* this css hides an element with the id of jayz */
+                      </code></pre>
+                    </div><!--//code-block-->
+                    <div class="code-block">
+                      <pre><code class="language-javascript">
+      $("button").click(function(){
+        $('#jayz').fadeIn(3000);
+        // $('#jayz').show();
+        // $('#jayz').toggle();
+        // $('#jayz').fadeToggle();
+      });
+                      </code></pre>
+                    </div><!--//code-block-->
+                    <br>
+                    <button id="button" type="button"  class="btn btn-success" style="width:100%; height:50px;">Show JayZ</button>
+                    <br><br>
+                    <img id="jayz" src="http://static.vibe.com/files/photo_gallery_images/magna-carta-holy-grail-review-4.jpg" title="click" width="100%" style="display:none;">
+                    <br><br>
+                    <p> What I want you to notice here is that on click of button triggers this function. Then the function goes and find the id of jayz and fades that id in. So an event on one element can effect another. You can try the same code with <strong>show( )</strong> and it will work just fine.</p>
+                    <p>Now you can also <strong>toggle( )</strong> an effect, like an on and off switch.</p>
+                    <p>Then there is also a <strong>fadeToggle( )</strong>, which you can probably guess what it</p>
+                    <br>
+                    <strong>Moving on ...</strong><br><br>
+                    <p>So there are a number of other events you can wait to trigger. To see a more expanisve list you can <a href="https://api.jquery.com/category/events/" target="blank">check it out here.</a> </p>
+
+                </div><!--//info-->
+                <!--<div class="cta-container">
+                    <div class="speech-bubble">
+                        <p class="intro">Pastry gummi bears gummies chupa chups jelly-o cake liquorice croissant. Liquorice apple pie candy canes brownie caramels brownie macaroon sesame snaps. </p>
+                        <div class="icon-holder  text-center"><i class="fa fa-smile-o"></i></div>
+                    </div>
+                </div>--><!--//cta-container-->
+            </div><!--//license-inner-->
+        </div><!--//container-->
+    </section><!--//how-->
+
+        <!-- ******LICENSE****** -->
+        <section id="morecss" class="license section">
+            <div class="container">
+                <div class="license-inner">
+                <h2 class="title text-center">Animate</h2>
+                <p> So you may want to do something more specific that jQuery doesn't already have in a function so they give you the ability to use <strong> animate( )</strong> to create exactly what you want. <br><a href="http://api.jquery.com/animate/" target="blank">jQuery's animate documentation.</a></p>
+                <br>
+                    <div class="info">
+                        <!-- <h3 class="sub-title text-center">Cascading</h3> -->
+                        <pre><code class="language-markup">
+        &ltbutton&gt Move Div &lt/button&gt
+        &ltdiv&gt&lt/div&gt
+                        </code></pre>
+                        <pre><code class="language-css">
+        div{
+          height:100px;
+          width:100px;
+          background-color:orange;
+        }
+                        </code></pre>
+                        <pre><code class="language-javascript">
+        $('button').click(function(){
+          $('div').animate({ marginLeft: '600px'});
+          // $('div').animate({ marginLeft: '600px'},3000);
+        });
+                        </code></pre>
+                        <br>
+                        <button id="button2" type="button"  class="btn btn-success" style="width:100%; height:50px;">Move Div</button><br><br>
+                        <br>
+                        <div id="movebox" style="height:100px;width:100px;background-color:orange;"></div><br><br>
+                        <p>I wanted to move this div sideways so I increased the margin with animate. Also note that this takes a time input which I included right under the animate in a comment. The number again stands for milliseconds.  </p>
+                        <p>We can also add more effects.</p>
+                        <pre><code class="language-javascript">
+        $('button').click(function(){
+          $('div').animate({ marginLeft: '600px', opacity: '0'},3000);
+        });
+                        </code></pre>
+                        <br>
+                        <button id="button3" type="button"  class="btn btn-success" style="width:100%; height:50px;">Fade and Move</button><br><br>
+                        <br>
+                        <div id="movebox3" style="height:100px;width:100px;background-color:red;"></div><br>
+                        <p>Lets say we want a couple of animations to happen in steps.</p>
+                        <pre><code class="language-javascript">
+$('button').click(function(){
+  $('div')
+    .animate({ marginLeft: '600px', opacity: '0'},3000)
+    .animate({ marginTop: '300px', marginLeft: "0", opacity: '1'},3000)
+    .animate({ marginLeft: "600px", opacity: '0', height:"0", width: "0"},3000);
+});
+                        </code></pre>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div id="movebox4" style="height:100px;width:100px;background-color:red;"></div><br>
+
+                        <br>
+                    </div><!--//info-->
+                    <!--<div class="cta-container">
+                        <div class="speech-bubble">
+                            <p class="intro">Pastry gummi bears gummies chupa chups jelly-o cake liquorice croissant. Liquorice apple pie candy canes brownie caramels brownie macaroon sesame snaps. </p>
+                            <div class="icon-holder  text-center"><i class="fa fa-smile-o"></i></div>
+                        </div>
+                    </div>--><!--//cta-container-->
+                </div><!--//license-inner-->
+            </div><!--//container-->
+        </section><!--//how-->
+
+    <section id="animation" class="license section">
+        <div class="container">
+            <div class="license-inner">
+              <br>
+            <h2 class="title text-center">Making a Slider</h2>
+                <div class="info">
+                    <p> Ever see those fancy sliders where images slowly slide by. Well thats jQuery. So lets test what we've learned and try to make one.</p>
+                    <br>
+                    <h3 class="sub-title text-center">So how do we do this?</h3>
+                    <br>
+                    <p>So before we can start the slider animation we have to understand what a slider is conceptually then in terms of HTML + CSS.</p>
+                    <p>So a slider is a series of images that slowly pan in from the right pushing the other out of the way.</p>
+                    <br>
+                    <p><strong>Problem 1 :</strong> HTML elements naturally stack on top of each other. They don't innately stack side by side.</p>
+                    <p><strong>Problem 2 :</strong> The images to the left of the current image cannot be seen until they pan in. </p>
+                    <p><strong>Problem 3 :</strong> How do we actually do the animate?</p>
+                    <p><strong>Problem 4 :</strong> If all the images pan to the left how do we put the left most image back so we don't run out of images.</p>
+                    <br>
+                    <h3 class="sub-title text-center">Stack the images</h3>
+                    <br>
+                    <p>Now if i throw two images here obviously they will stack ontop of each other so lets see if we can get several images side by side with CSS.</p><br>
+
+                    <pre><code class="language-markup">
+  &ltdiv id="slider-wrap"&gt
+    &ltimg src="bb1.jpg"&gt
+    &ltimg src="bb2.jpg"&gt
+    &ltimg src="bb3.jpg"&gt
+    &ltimg src="bb4.jpg"&gt
+  &lt/div&gt
+                    </code></pre>
+                    <br>
+                    <button id="ex1" type="button"  class="btn btn-success" style="width:100%; height:50px;">fadeToggle( ); example</button>
+                    <br><br>
+                    <div id="ex1a">
+                      <div class="dont-act-right">
+                        <img src="bb1.jpg">
+                        <img src="bb2.jpg">
+                        <img src="bb3.jpg">
+                        <img src="bb4.jpg">
+                      </div>
+                    </div>
+                    <!-- end of act-right div-->
+                    <br>
+                    <p>The images go down as expected. Lets see if we can change that.</p>
+                    <pre><code class="language-markup">
+  &ltdiv id="slider-wrap"&gt
+    &ltimg src="bb1.jpg" id="first"&gt
+    &ltimg src="bb2.jpg" id="second"&gt
+    &ltimg src="bb3.jpg" id="third"&gt
+    &ltimg src="bb4.jpg" id="fourth"&gt
+  &lt/div&gt
+                    </code></pre>
+                    <pre><code class="language-css">
+    .slider-wrap{
+      min-height: 500px;
+      position: relative;
+    }
+    .slider-wrap img{
+      width:100%;
+      position: absolute;
+    }
+    #first{}
+    #second{left:100%;}
+    #third{left:200%;}
+    #fourth{left:300%;}
+                    </code></pre>
+                    <br>
+                    <button id="ex2" type="button"  class="btn btn-success" style="width:100%; height:50px;">fadeToggle( ); example</button>                                <br><br>
+                    <div id="ex2a">
+                      <div class="act-right">
+                        <img src="bb1.jpg" id="first">
+                        <img src="bb2.jpg" id="second">
+                        <img src="bb3.jpg" id="third">
+                        <img src="bb4.jpg" id="fourth">
+                      </div>
+                    </div>
+                    <p>Ok cool so they are next to each other. Now we just need to hide the ones that overlap the side. This is very easy. All you have to do is add <strong> overflow:hidden; </strong> So the finished CSS should look like this.</p>
+
+                    <pre><code class="language-css">
+    .slider-wrap{
+      min-height: 500px;
+      position: relative;
+      overflow:hidden; /* JUST ADDED */
+    }
+    .slider-wrap img{
+      width:100%;
+      position: absolute;
+    }
+    #first{}
+    #second{left:100%;}
+    #third{left:200%;}
+    #fourth{left:300%;}
+                    </code></pre>
+                    <br>
+                    <button id="ex3" type="button"  class="btn btn-success" style="width:100%; height:50px;">fadeToggle( ); example</button>                                <br><br>
+                    <div id="ex3a">
+                      <div class="act-right-2">
+                        <img src="bb1.jpg" id="first">
+                        <img src="bb2.jpg" id="second">
+                        <img src="bb3.jpg" id="third">
+                        <img src="bb4.jpg" id="fourth">
+                      </div>
+                    </div>
+                    <p>Done :)</p>
+                    <br>
+                    <h3 class="sub-title text-center">Ok... how do we animate this?</h3>
+                    <br>
+                    <p>Lets just scootch over #first, #second, #third and #fourth.</p>
+
+
+                    <pre><code class="language-javascript">
+    $('#first')
+        .animate({left: '-=100%'}, 3000)
+    $('#second')
+        .animate({left: '-=100%'}, 3000)
+        .animate({left: '-=100%'}, 3000)
+    $('#third')
+        .animate({left: '-=100%'}, 3000)
+        .animate({left: '-=100%'}, 3000)
+        .animate({left: '-=100%'}, 3000)
+    $('#fourth')
+        .animate({left: '-=100%'}, 3000)
+        .animate({left: '-=100%'}, 3000)
+        .animate({left: '-=100%'}, 3000)
+                    </code></pre>
+                    <p> This makes the animation happen too fast lets add a delay to it. Lets pause each animation for 1 second. We can use  <strong> delay( );</strong> </p>
+                    <pre><code class="language-javascript">
+    $('#first')
+        .animate({left: '-=100%'}, 3000)
+    $('#second')
+        .animate({left: '-=100%'}, 3000).delay(1000)
+        .animate({left: '-=100%'}, 3000)
+    $('#third')
+        .animate({left: '-=100%'}, 3000).delay(1000)
+        .animate({left: '-=100%'}, 3000).delay(1000)
+        .animate({left: '-=100%'}, 3000)
+    $('#fourth')
+        .animate({left: '-=100%'}, 3000).delay(1000)
+        .animate({left: '-=100%'}, 3000).delay(1000)
+        .animate({left: '-=100%'}, 3000)
+                    </code></pre>
+                    <div class="act-right-last">
+                      <img src="bb1.jpg" id="first">
+                      <img src="bb2.jpg" id="second">
+                      <img src="bb3.jpg" id="third">
+                      <img src="bb4.jpg" id="fourth">
+                    </div>
+                    <h3 class="sub-title text-center">How do I move the images back?</h3>
+                    <br>
+                    <p> Well that is difficult problem, and if we have time to talk about it we shall :). But try to see if you can conceptually figure it out. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- <button type="button" id="reset-but" class="btn btn-success" style="position:fixed;bottom:1%;left:1%;z-index:990;">Reset Animations</button> -->
+    <!-- ******CONTACT****** -->
+    <section id="contact" class="contact section has-pattern">
+        <div class="container">
+            <div class="contact-inner">
+                <h2 class="title  text-center">Contact</h2>
+                <p class="intro  text-center">I hope you find this tutorial useful. <br />Feel free to get in touch if you have any questions or suggestions.</p>
+                <div class="author-message">
+                    <div class="profile">
+                        <img class="img-responsive" src="assets/images/alain.jpg" alt="" />
+                    </div><!--//profile-->
+                    <div class="speech-bubble">
+                        <h3 class="sub-title">How do I get the best out of this class?</h3>
+                        <p>Hey, in this class I wanted to touch on some jQuery basics so you can see what is possible so that at a later date, if you need, you can traverse the jQuery documentation and produce the desired result. I hope you had a great time with me and I wish you luck on all your future endevours!</p>
+                        <div class="source">
+
+                            <span class="name"><a href="http://google.com" target="_blank">Alain Goldman</a></span>
+                            <br />
+                            <span class="title">Fullstack developer</span>
+                        </div><!--//source-->
+                    </div><!--//speech-bubble-->
+                </div><!--//author-message-->
+                <div class="clearfix"></div>
+                <div class="info text-center">
+                    <h4 class="sub-title">Alain@BeginnerProgrammers.nyc</h4>
+                    <h4 style="color:white;margin-top:-27px;"class="sub-title">Email me, I get bored :(</h4>
+                </div><!--//info-->
+            </div><!--//contact-inner-->
+        </div><!--//container-->
+    </section><!--//contact-->
+
+    <!-- ******FOOTER****** -->
+    <footer class="footer">
+        <div class="container text-center">
+            <small class="copyright">Coded with <i class="fa fa-heart"></i> by Alain Goldman</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="assets/plugins/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script>$("#bother").click(function() {
+          $(".annoying-box").show();
+            });
+          $('.annoying-box').click(function() {
+            $('.annoying-box').hide();
+          });
+          $("#cheese").click(function(){
+              alert("You clicked on this div!");
+          });
+          $("#goaway").click(function(){
+            $('#goaway').hide();
+          });
+          $("#goaway2").click(function(){
+            $('#goaway2').fadeOut(2000);
+          });
+          $("#button").click(function(){
+            $('#jayz').fadeIn(3000);
+          });
+          $('#button2').click(function(){
+            $('#movebox').animate({ marginLeft: '600px'},3000);
+          });
+          $('#button3').click(function(){
+            $('#movebox3').animate({ marginLeft: '600px', opacity: '0'},3000);
+
+            $('#movebox4')
+              .animate({ marginLeft: '600px', opacity: '0'},3000)
+              .animate({ marginTop: '300px', marginLeft: "0", opacity: '1'},3000)
+              .animate({ marginLeft: "600px", opacity: '0', height:"0", width: "0"},3000);
+          });
+          $('#ex1').click(function(){
+            $('#ex1a').fadeToggle(2000);
+          });
+          $('#ex2').click(function(){
+            $('#ex2a').fadeToggle(2000);
+          });
+          $('#ex3').click(function(){
+            $('#ex3a').fadeToggle(2000);
+          });
+          $(document).ready(function() {
+            $('.act-right-last').click(function(){
+              $('.act-right-last #first')
+                .delay(2500)
+                .animate({left: '-=100%'},3000)
+              $('.act-right-last #second')
+                  .delay(2500)
+                  .animate({left: '-=100%'},3000).delay(1000)
+                  .animate({left: '-=100%'},3000)
+              $('.act-right-last #third')
+                  .delay(2500)
+                  .animate({left: '-=100%'},3000).delay(1000)
+                  .animate({left: '-=100%'},3000).delay(1000)
+                  .animate({left: '-=100%'},3000)
+              $('.act-right-last #fourth')
+                  .delay(2500)
+                  .animate({left: '-=100%'},3000).delay(1000)
+                  .animate({left: '-=100%'},3000).delay(1000)
+                  .animate({left: '-=100%'},3000)
+            });
+          });
+    </script>
+</body>
+</html>
